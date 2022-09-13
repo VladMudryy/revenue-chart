@@ -1,0 +1,14 @@
+.chartPage * {
+    font-family: 'Montserrat';
+}
+
+.container-large {
+    height: 506px;
+    margin-top: 137px;
+    border: 1px solid #E5E5E5;
+    border-radius: 4px; 
+}
+
+.mainPage {
+    display: none;
+}

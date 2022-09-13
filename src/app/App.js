@@ -1,3 +1,4 @@
+import ChartPage from "../pages/ChartPage";
 import MainPage from "../pages/MainPage";
 
 function App() {
@@ -5,6 +6,7 @@ function App() {
     <div>
       <main>
         <MainPage />
+        <ChartPage />
       </main>
     </div>
   );

@@ -1,0 +1,40 @@
+.chart__data {
+    display: flex;
+    flex-direction: column;
+    margin: 32px 0px 32px 32px;
+}
+
+.data__tilte {
+    font-size: 12px;
+    line-height: 133%;
+    letter-spacing: 0.4px;
+    color: #9C9C9C;
+}
+
+.revenue {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 132%;
+    color: #333333;
+}
+.data__average {
+    display: flex;
+    margin-top: 22px;
+}
+
+.average__item {
+    margin-right: 32px;
+}
+
+.average__item:last-child {
+    margin-right: 0px;
+}
+
+.price__item {
+    margin-top: 4px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 132%;
+    color: #333333;
+    opacity: 0.8;
+}
