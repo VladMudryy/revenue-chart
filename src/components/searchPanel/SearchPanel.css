@@ -1,0 +1,28 @@
+.search {
+    position: relative;
+    margin-top: 115px;
+    margin-bottom: 50px;
+}
+
+.search__input {
+    position: relative;
+    width: 320px;
+    height: 40px;
+    padding-left: 44px;
+    background-color: rgba(249, 250, 251, 1);
+    border: 1px solid rgba(229, 231, 235, 1);
+    border-radius: 8px;
+}
+
+.search__input::placeholder {
+    font-size: 14px;
+    line-height: 143%;
+    color: #6B7280;
+    opacity: 0.5;
+}
+
+.search__icon {
+    position: absolute;
+    left: 16px;
+    top: 10px;
+}
