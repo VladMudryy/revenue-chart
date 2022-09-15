@@ -1,8 +1,6 @@
 import './ChartData.css';
 
 const ChartData = (statistic) => {
-   console.log(statistic); 
-    
     return (
         <div className="chart__data">
             <div className="data__total">

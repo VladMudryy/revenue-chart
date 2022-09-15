@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 import SearchPanel from '../searchPanel/SearchPanel';
 
@@ -77,11 +78,13 @@ const ContentTable = () => {
 
             return (
                 <li key={item._id} className="content__items">
-                    <div className="content__item content_name">{item.name}</div>
-                    <div className="content__item content_date">{item.date}</div>
-                    <div 
-                        className="content__item content_active"
-                        style={item.isActive ? {'color' : '#5D5FEF'} : {'color' : '#EF5DA8'}}>{item.isActive ? 'Active' : 'Disable'}</div>
+                    <Link to={`/${item.id}`} className="content__items">
+                        <div className="content__item content_name">{item.name}</div>
+                        <div className="content__item content_date">{item.date}</div>
+                        <div 
+                            className="content__item content_active"
+                            style={item.isActive ? {'color' : '#5D5FEF'} : {'color' : '#EF5DA8'}}>{item.isActive ? 'Active' : 'Disable'}</div>
+                    </Link>
                 </li>
             )
         });

@@ -13,13 +13,32 @@ import {
   import moment from 'moment';
   moment().format();
 
-  function Home({dataRevenues}) {
+  function Home({dataRevenues, filterCurr}) {
     const [data, setData] = useState('');
+    const [filterTickle, setfilterTickle] = useState('');
+    const [filterLabel, setfilterLabel] = useState('');
+    
+    useEffect(() => {
+      switch (filterCurr) {
+        case "week":
+          setfilterTickle(1)
+          setfilterLabel(() => (date) => new Date(date).toLocaleString('en-us', {weekday:'short'}))
+          break;
+        case "year":
+          setfilterTickle(31)
+          setfilterLabel(() => (date) => `${new Date(date).toLocaleString('en-us', {month:'short'})} ${new Date(date).toLocaleString('en-us', {year:'2-digit'})}`)
+          break;
+        default:
+          setfilterTickle(4)
+          setfilterLabel(() => (date) => `${new Date(date).toLocaleString('en-us', {day:'numeric'})} ${new Date(date).toLocaleString('en-us', {month:'short'})}`)
+      }
+    }, [filterCurr])
 
     let currentMonthMax = 1000
     if (data) {
       currentMonthMax = Math.max(...data.map((o) => o.value));
     }
+
     
 
     useEffect(() => {
@@ -52,7 +71,8 @@ import {
             dataKey="date"
             axisLine={false}
             tickLine={false}
-            tickCount={7}
+            interval={filterTickle}
+            tickFormatter={filterLabel}
           />
   
           <YAxis
@@ -118,21 +138,21 @@ const ChartRevenue = ({data, filterProp, updateStat}) => {
                 let day = Date.parse(item.date)
                 return day >= startDateM && day <= endDate && item.curency !== 'null'
               }).map(item => {
-                return {...item, 'value': +item.curency}
+                return {'date': item.date, 'value': +item.curency}
               })
             case 'year':
               return dateNew.filter(item => {
                 let day = Date.parse(item.date)
                 return day >= startDateY && day <= endDate && item.curency !== 'null'
               }).map(item => {
-                return {...item, 'value': +item.curency}
+                return {'date': item.date, 'value': +item.curency}
               })
             default:
               return dateNew.filter(item => {
                 let day = Date.parse(item.date)
                 return day >= startDateW && day <= endDate && item.curency !== 'null'
               }).map(item => {
-                return {...item, 'value': +item.curency}
+                return {'date': item.date, 'value': +item.curency}
               })
       }
     }
@@ -160,7 +180,7 @@ const ChartRevenue = ({data, filterProp, updateStat}) => {
     return (
         <div className="chart">
             <div></div>
-            <Home dataRevenues={transformedDate}/>
+            <Home dataRevenues={transformedDate} filterCurr={filter} />
         </div> 
     )
 }

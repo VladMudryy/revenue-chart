@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import useOrilServiceApi from '../services/OrilServiceApi';
 
@@ -13,6 +14,8 @@ const ChartPage = () => {
     const [filter, setFilter] = useState('month');
     const [statistic, setStatistic] = useState('month');
 
+    const {chartId} = useParams();
+
     const {getChartData} = useOrilServiceApi();
 
     useEffect(() => {
@@ -20,7 +23,7 @@ const ChartPage = () => {
     }, [])
 
     const onRequest = () => {
-        getChartData('oleh_coin')
+        getChartData(chartId)
             .then(res => setData(res))
     }
 
