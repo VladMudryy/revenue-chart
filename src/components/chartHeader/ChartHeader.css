@@ -15,6 +15,7 @@
     display: flex;
     border: 1px solid #E5E5E5;
     border-radius: 4px;
+    cursor: pointer;
 }
 .chart__item {
     display: flex;

@@ -46,18 +46,10 @@ const useOrilServiceApi = () => {
 
     const _getDataItem = (obj) => {
         const sortedArr = obj.data.sort(function(a,b){
-            return new Date(b.date) - new Date(a.date);
+            return new Date(a.date) - new Date(b.date);
           });
-          const currentDate = new Date(sortedArr[0].date);
-          let month = currentDate.getMonth();
-            if (month < 10) month = "0" + month;
-            let dateOfMonth = currentDate.getDate();
-            if (dateOfMonth < 10) dateOfMonth = "0" + dateOfMonth;
-            let year = currentDate.getFullYear();
-            let formattedDate = dateOfMonth + "." + month + "." + year;
         return {
             revenue: sortedArr,
-            lastData: formattedDate,
             id: obj.id,
             _id: obj._id
         }
